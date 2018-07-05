@@ -31,10 +31,13 @@
                     url:"${pageContext.request.contextPath}/manager/verifyCode",
                     success:function (message) {
                         if(message){
+                            alert("true");
                             flag=true;
                             $("#message").empty();
 						}else {
-                            $("#message").text("验证码有误");
+                            alert("false");
+                            flag=false;
+                            $("#message").text("验证码有误").css("color","red");
 						}
 
                     }

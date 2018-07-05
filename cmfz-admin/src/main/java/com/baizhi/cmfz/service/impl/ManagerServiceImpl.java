@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class ManagerServiceImpl implements ManagerService{
 
-    //@SuppressWarnings("SpringJavaAutowiringInspection")
     @Autowired
     private ManagerDao managerDao;
 

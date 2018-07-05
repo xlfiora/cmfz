@@ -26,8 +26,6 @@ public class ManagerController {
     @Autowired
     private ManagerService managerService;
 
-
-
     /**
      * 管理员注册
      * @param name
