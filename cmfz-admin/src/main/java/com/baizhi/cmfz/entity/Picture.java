@@ -16,7 +16,8 @@ public class Picture {
     private String pictureName;
     private String pictureMessage;
     private String pictureStatus;
-    @JSONField(format = "yyyy-MM-dd")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss ")
     private Date pictureDate;
 
     public Picture() {

@@ -11,7 +11,7 @@
     </delete>
 
     <update id="updatePicture">
-        update picture set pictureName=#{pictureName},pictureMessage={pictureMessage},pictureStatus={pictureStatus},pictureDate=#{pictureDate} where pictureId=#{pictureId}
+        update picture set pictureMessage=#{pictureMessage},pictureStatus=#{pictureStatus} where pictureId=#{pictureId}
     </update>
 
     <select id="selectPictureById" resultType="picture">
