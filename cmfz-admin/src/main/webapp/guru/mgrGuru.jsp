@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isELIgnored="false" %>
 
 	<script type="text/javascript">
 		$(function(){
@@ -33,11 +33,11 @@
 					var rowData = $("#guru_dg").datagrid("getSelected");
 					console.log(rowData);
 					$("#guru_dd").dialog({
-                        title: '修改图片信息',
+                        title: '修改上师信息',
 						width:300,
 						height:200,
                         modal: true,
-						href:"${pageContext.request.contextPath}/modifyGuruform.jsp", //包含子页面
+						href:"${pageContext.request.contextPath}/guru/modifyGuruform.jsp", //包含子页面
 						onLoad:function(){
 							$("#guru_mf").form("load",rowData); //在加载表单时将行数据加载到表单元素中
 						}
@@ -52,17 +52,33 @@
 			
 			$("#guru_add").linkbutton({
 				onClick:function(){
-					var rowData = $("#guru_dg").datagrid("getSelected");
-					console.log(rowData);
 					$("#guru_dd").dialog({
-                        title: '新增轮播图',
+                        title: '新增上师信息',
 						width:360,
 						height:200,
                         modal: true,
-						href:"${pageContext.request.contextPath}/addGuruform.jsp", //包含子页面
+						href:"${pageContext.request.contextPath}/guru/addGuruform.jsp", //包含子页面
 					});
 				},
 			});
+
+            $("#guru_adds").linkbutton({
+                onClick:function(){
+                    $("#guru_dd").dialog({
+                        title: '批量插入上师信息',
+                        width:360,
+                        height:200,
+                        modal: true,
+                        href:"${pageContext.request.contextPath}/guru/addGurusform.jsp", //包含子页面
+                    });
+                },
+            });
+
+            $("#guru_export").linkbutton({
+                onClick:function(){
+                   window.location.href="${pageContext.request.contextPath}/guru/exportGuruExcel";
+                },
+            });
 			
 
 			/*删除图片*/
@@ -135,6 +151,10 @@
 			data-options="iconCls:'icon-add',plain:true,text:'新增'"></a>
 		<a id="guru_remove" class="easyui-linkbutton"
 			data-options="iconCls:'icon-cancel',plain:true,text:'删除'"></a>
+		<a id="guru_adds" class="easyui-linkbutton"
+		   data-options="iconCls:'icon-disk_upload',plain:true,text:'批量插入'"></a>
+		<a id="guru_export" class="easyui-linkbutton"
+		   data-options="iconCls:'icon-disk_download',plain:true,text:'导出Excel'"></a>
 		<input id="guru_ss" class="easyui-searchbox" style="width:300px"
 			data-options="searcher:guru_qq,prompt:'请您输入需要模糊查询的内容',menu:'#guru_mm'"></input>
 		<div id="guru_mm" style="width:120px">

@@ -10,13 +10,14 @@
 	<link rel="icon" href="${pageContext.request.contextPath}/img/favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/common.css" type="text/css">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/css/login.css" type="text/css">
+
 	<script type="text/javascript" src="${pageContext.request.contextPath}/script/jquery.js"></script>
 	<script type="text/javascript" src="${pageContext.request.contextPath}/script/common.js"></script>
 	<script type="text/javascript">
 	
 		$(function(){
 
-		    var flag=false;
+		    var enCodeFlag=false;
 
 			//点击更换验证码：
 			$("#captchaImage").click(function(){//点击更换验证码
@@ -31,12 +32,10 @@
                     url:"${pageContext.request.contextPath}/manager/verifyCode",
                     success:function (message) {
                         if(message){
-                            alert("true");
-                            flag=true;
+                            enCodeFlag=true;
                             $("#message").empty();
 						}else {
-                            alert("false");
-                            flag=false;
+                            enCodeFlag=false;
                             $("#message").text("验证码有误").css("color","red");
 						}
 
@@ -46,10 +45,11 @@
 			
 			//  form 表单提交
 			$("#loginForm").bind("submit",function(){
-			    if(flag){
-                    this.submit();
+			    if(enCodeFlag){
+			        return true;
+				}else {
+			        return false;
 				}
-
 			});
 		});
 	</script>
@@ -69,7 +69,7 @@
 								用户名:
 							</th>
 							<td>
-								<input type="text"  name="name" class="text" value="${cookie.name.value}" maxlength="20"/>
+								<input type="text"  id="name" name="name" class="text" value="${cookie.name.value}" maxlength="20"/>
 							</td>
 					  </tr>
 					  <tr>
@@ -77,7 +77,7 @@
 								密&nbsp;&nbsp;&nbsp;码:
 							</th>
 							<td>
-								<input type="password" name="pwd" class="text" value="" maxlength="20" autocomplete="off"/>
+								<input type="password" id="pwd" name="pwd" class="text" value="" maxlength="20" autocomplete="off"/>
 							</td>
 					  </tr>
 					

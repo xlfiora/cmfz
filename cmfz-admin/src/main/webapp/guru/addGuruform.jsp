@@ -21,7 +21,7 @@
  			
  		});
 
-        $("#guru_mf_cancel").linkbutton({
+        $("#guru_af_cancel").linkbutton({
             onClick:function () {
                 $("#guru_dd").dialog("close");
             },

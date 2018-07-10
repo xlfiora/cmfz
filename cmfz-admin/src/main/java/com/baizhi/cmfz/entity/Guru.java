@@ -1,5 +1,7 @@
 package com.baizhi.cmfz.entity;
 
+import cn.afterturn.easypoi.excel.annotation.Excel;
+
 import java.util.UUID;
 
 /**
@@ -7,9 +9,16 @@ import java.util.UUID;
  */
 public class Guru {
 
+    @Excel(name = "上师编号")
     private String guruId;
+
+    @Excel(name = "上师名")
     private String guruName;
+
+    @Excel(name = "上师照片")
     private String guruPhoto;
+
+    @Excel(name = "上师简介")
     private String guruIntroduction;
 
     public Guru() {

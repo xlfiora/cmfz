@@ -34,7 +34,7 @@ public class PictureServiceImpl implements PictureService{
     }
 
     @Override
-    public Integer modfiyPicture(Picture picture) {
+    public Integer modifyPicture(Picture picture) {
         return pictureDao.updatePicture(picture);
     }
 

@@ -28,6 +28,11 @@ public class GuruServiceImpl implements GuruService{
         return guruDao.insertGuru(guru);
     }
 
+    public Integer addGurus(List<Guru> gurus){
+        return guruDao.insertGurus(gurus);
+    }
+
+
     @Override
     public Integer removeGuru(String guruId) {
         return guruDao.deleteGuru(guruId);
@@ -36,6 +41,12 @@ public class GuruServiceImpl implements GuruService{
     @Override
     public Integer modifyGuru(Guru guru) {
         return guruDao.updateGuru(guru);
+    }
+
+    @Transactional(propagation= Propagation.SUPPORTS,readOnly=true)
+    @Override
+    public List<Guru> queryAllGuru() {
+        return guruDao.selectAllGuru();
     }
 
     @Transactional(propagation= Propagation.SUPPORTS,readOnly=true)
@@ -71,4 +82,6 @@ public class GuruServiceImpl implements GuruService{
 
         return map;
     }
+
+
 }

@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<td>上传轮播图:</td>
-				<td><input class="easyui-validatebox" data-options="required:true," name="newPicture" type="file"/></td>
+				<td><input class="easyui-filebox" data-options="required:true," name="newPicture"/></td>
 			</tr>
 			<tr>
 				<td><a id="picture_af_submit" class="easyui-linkbutton" data-options="iconCls:'icon-picture_save'">保存</a></td>

@@ -38,7 +38,7 @@
 						width:300,
 						height:200,
                         modal: true,
-						href:"${pageContext.request.contextPath}/modifyPictureform.jsp", //包含子页面
+						href:"${pageContext.request.contextPath}/picture/modifyPictureform.jsp", //包含子页面
 						onLoad:function(){
 							$("#picture_mf").form("load",rowData); //在加载表单时将行数据加载到表单元素中
 						}
@@ -60,7 +60,7 @@
 						width:360,
 						height:200,
                         modal: true,
-						href:"${pageContext.request.contextPath}/addPictureform.jsp", //包含子页面
+						href:"${pageContext.request.contextPath}/picture/addPictureform.jsp", //包含子页面
 					});
 				},
 			});

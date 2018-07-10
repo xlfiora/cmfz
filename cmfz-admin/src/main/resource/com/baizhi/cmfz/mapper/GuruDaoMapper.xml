@@ -6,6 +6,13 @@
         insert into guru values(#{guruId},#{guruName},#{guruPhoto},#{guruIntroduction})
     </insert>
 
+    <insert id="insertGurus">
+        insert into guru values
+        <foreach collection="gurus" item="guru" separator=",">
+            (#{guru.guruId},#{guru.guruName},#{guru.guruPhoto},#{guru.guruIntroduction})
+        </foreach>
+    </insert>
+
     <delete id="deleteGuru">
         delete from guru where guruId=#{guruId}
     </delete>
@@ -13,6 +20,10 @@
     <update id="updateGuru">
         update guru set guruName=#{guruName},guruIntroduction=#{guruIntroduction} where guruId=#{guruId}
     </update>
+
+    <select id="selectAllGuru" resultType="guru">
+        select * from guru
+    </select>
 
     <select id="countTotalRows" resultType="java.lang.Integer">
         select count(*) from guru

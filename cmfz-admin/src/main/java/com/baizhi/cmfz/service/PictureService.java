@@ -14,7 +14,7 @@ public interface PictureService {
 
     public Integer removePicture(String pictureId);
 
-    public Integer modfiyPicture(Picture picture);
+    public Integer modifyPicture(Picture picture);
 
     public Picture queryPictureById(String pictureId);
 

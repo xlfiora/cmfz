@@ -5,10 +5,8 @@ import com.baizhi.cmfz.service.ManagerService;
 import com.baizhi.cmfz.util.CreateValidateCodeUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -38,8 +36,9 @@ public class ManagerController {
         Manager manager = new Manager();
         manager.setName(name);
         manager.setPwd(pwd);
-
+        managerService.addManager(manager);
         return "login";
+
     }
 
     /**

@@ -13,9 +13,13 @@ public interface GuruDao {
 
     public Integer insertGuru(Guru guru);
 
+    public Integer insertGurus(@Param("gurus") List<Guru> gurus);
+
     public Integer deleteGuru(String guruId);
 
     public Integer updateGuru(Guru guru);
+
+    public List<Guru> selectAllGuru();
 
     public Integer countTotalRows();
 
