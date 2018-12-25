@@ -39,4 +39,11 @@
         <property name="prefix" value="/"></property>
     </bean>
 
+    <!--切换代理类方式 cglib    -->
+    <aop:config proxy-target-class="true"></aop:config>
+    <bean id="authorizationAttributeSourceAdvisor" class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <!--springmvc工厂可以使用spring工厂创建的bean-->
+        <property name="securityManager" ref="securityManager"></property>
+    </bean>
+
 </beans>

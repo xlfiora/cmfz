@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 	<title>持名法州后台管理中心</title>
@@ -99,7 +99,7 @@
 						</th>
 						<td>
 							<label>
-								<input type="checkbox" id="isRememberUsername" name="flag" value="true"/> 记住用户名
+								<input type="checkbox" id="isRememberUsername" name="rememberMe"/> 记住用户名
 							</label>
 						</td>
 					</tr>

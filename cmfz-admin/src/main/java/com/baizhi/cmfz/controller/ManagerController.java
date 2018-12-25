@@ -3,9 +3,16 @@ package com.baizhi.cmfz.controller;
 import com.baizhi.cmfz.entity.Manager;
 import com.baizhi.cmfz.service.ManagerService;
 import com.baizhi.cmfz.util.CreateValidateCodeUtil;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.AuthenticationException;
+import org.apache.shiro.authc.IncorrectCredentialsException;
+import org.apache.shiro.authc.UnknownAccountException;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.Cookie;
@@ -48,23 +55,26 @@ public class ManagerController {
      * @return
      */
     @RequestMapping("/loginManager")
-    public String loginManager(String name, String pwd, String flag, HttpSession session, HttpServletResponse response, HttpServletRequest request){
-        System.out.println(flag);
+    public String loginManager(String name, String pwd,boolean rememberMe,HttpSession session){
 
-        Manager manager = managerService.loginManager(name, pwd);
-        if(manager!=null){
-            session.setAttribute("manager",manager);
+        Subject subject = SecurityUtils.getSubject();
 
-            if(flag!=null){
-                Cookie c1=new Cookie("name",name);
-
-                c1.setPath(request.getContextPath());
-                c1.setMaxAge(7*24*60*60);
-                response.addCookie(c1);
-            }
+        try {
+            subject.login(new UsernamePasswordToken(name,pwd,rememberMe));
+            session.setAttribute("managerName",subject.getPrincipal());
+            System.out.println(subject.hasRole("root")? "有root":"无root");
             return "main";
+        } catch (UnknownAccountException uae) {
+            uae.printStackTrace();
+            return "login";
+        }catch (IncorrectCredentialsException ice){
+            ice.printStackTrace();
+            return "login";
+        }catch (AuthenticationException ae){
+            ae.printStackTrace();
+            return "login";
         }
-       return "login";
+
     }
 
     /**

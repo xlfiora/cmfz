@@ -6,8 +6,24 @@
         insert into manager values(#{id},#{name},#{pwd},#{salt})
     </insert>
 
-    <select id="selectManager" resultType="Manager">
+    <select id="selectManagerByName" resultType="Manager">
         select * from manager where name=#{name}
     </select>
+    
+    <select id="selectRoleByName" resultType="role">
+        select r.* from
+        manager_role mr inner join  role r
+        on mr.roleId=r.roleId
+        where mr.managerId=(select id from manager where name=#{name})
+    </select>
+    
+    <select id="selectPermissionByName" resultType="permission">
+        select * from permission
+        where permissionId in
+            (select permissionId from role_permission
+                where roleId in( select roleId from manager_role
+                    where managerId=(select id from manager where name=#{name})))
+    </select>
+    
      
 </mapper>

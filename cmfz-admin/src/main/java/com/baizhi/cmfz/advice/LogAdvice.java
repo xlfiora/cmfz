@@ -40,8 +40,12 @@ public class LogAdvice {
 
         HttpSession session =request.getSession();
 
-        Manager manager = (Manager) session.getAttribute("manager");
-        log.setUserName(manager.getName());
+
+        String managerName = (String) session.getAttribute("managerName");
+        if(managerName!=null){
+            log.setUserName(managerName);
+        }
+
 
         //事务源
         String resource=args[0].getClass().toString();
